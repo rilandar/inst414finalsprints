@@ -1,57 +1,68 @@
-﻿#inst414finalsprint
-Summary:
- 	This project focuses on forecasting Maryland's energy consumption and revenue using machine learning models, specifically Random Forest and Gradient Boosting Regressors. Motivated by the growing demand for efficient and sustainable energy use, the study highlights the need for accurate predictions to avoid grid instability, financial loss, and environmental degradation. Using data from 2018–2023 provided by the U.S. Energy Information Administration, the models predict total retail sales (MWh) and revenue (in thousand dollars) for 2021–2023. Key features include year, average price (cents/kWh), and total retail sales.
-The Random Forest model showed promising results for 2021 and 2022 but struggled with higher error in 2023, possibly due to complexity or lack of features. The Gradient Boosting model added accuracy and was visualized using line graphs. Model performance was evaluated using Mean Absolute Error (MAE) and cross-validation. While results were generally reasonable, limitations include a small dataset, exclusion of key features, and the user's limited experience with hybrid models. Future work includes model tuning, feature expansion, and possibly integrating hybrid methods to enhance prediction accuracy and reliability for sustainable energy planning.
-Abstract: 
-Energy consumption is an essential and growing concern in today’s society, affecting environmental stability, economic health, and public well-being. As global energy demands increase, it has become clear that efficiency. Energy use is no longer just an option but a necessity. Energy consumption fluctuates throughout the year due to a variety of factors, such as weather patterns, time of day, and economic activity. Seasonal changes, peak hours, and unanticipated events all contribute to significant variations in demand, making it challenging to accurately predict and balance supply. Without accurate analysis and forecasting, utility providers face critical difficulties in matching supply with demand. This imbalance often results in a range of inefficiencies, including power outages, inflated operational costs, and unnecessary overproduction of energy. Such inefficiencies not only increase the risk of grid instability but also put undue strain on energy infrastructure, which can lead to significant financial losses and environmental harm. Additionally, relying on fossil fuels for overproduction exacerbates environmental degradation, contributing to the depletion of resources that are increasingly difficult to regenerate.
-The importance and urgency of addressing this issue are evident when considering the wider implications of inaccurate energy consumption forecasting. The inability to predict energy demand can lead to power shortages and gridlock, resulting in disruptions to both essential services and day-to-day life. For example, power outages can severely affect hospitals, emergency services, transportation networks, and industrial operations, undermining public safety and economic productivity. In residential areas, citizens may experience prolonged outages, which negatively impacts their quality of life and access to vital services. Accurate demand forecasting, therefore, is critical to prevent such disruptions. Additionally, the ability to predict energy consumption with greater precision allows utility providers to make timely adjustments to energy production and distribution. By identifying areas with high or low energy demand in advance, providers can reduce the likelihood of outages, lower costs associated with overproduction, and enhance overall grid efficiency. This level of foresight helps energy companies better plan for infrastructure upgrades, reduce energy waste, and ensure the longevity and reliability of the energy grid.
-Ultimately, the ability to predict energy consumption more accurately is vital not only for preventing operational disruptions but also for creating a more sustainable, resilient energy infrastructure. This project aims to equip utility providers with the tools they need to manage energy consumption more effectively, reducing costs, improving service reliability, and contributing to environmental sustainability. By encouraging innovation in predictive analytics, we can ensure that energy is used wisely and that future generations can enjoy a stable and sustainable energy system.
-This project aims to address these challenges by developing a predictive model for forecasting energy consumption in real-time. The goal is to create a framework that will assist in better grid management, enhance energy efficiency, and enable more sustainable practices in energy distribution. By leveraging advanced data analytics and machine learning techniques, the project seeks to provide more accurate insights into energy consumption patterns and facilitate proactive management by utility providers. This can help them predict demand spikes, minimize waste, and optimize energy distribution, contributing to the reduction of carbon emissions and the conservation of non-renewable resources 
+INST414_ML_project
+==============================
 
-Literature review:
-	The article “Forecasting energy consumption time series using machine learning techniques based on usage patterns of residential householders” by Jui-Sheng Chou. Talks about how they predicted residential electricity consumption using Machine learning. The article mentions that predictive measurements are cheaper to run and ensures that we can make changes to help the future. The models that the author mentions are ones that can predict energy use one day ahead. It looks at different types of models—single ones, combo (ensemble) ones, and advanced hybrid ones. The single model uses a handful of models, which include Linear Regression, Artificial Neural Networks(ANN), Classification and Regression Tree(C&R Tree), Support Vector Regression(SVR), etc. Ensemble models that were used by the team include voting and bagging approaches, which combine the predictions of the multiple models to improve accuracy.
-The most effective predictions, however, came from the hybrid models such as SAWIMA-MetaFA-LSSVR and SARIMA-PSO-LSSVR, which combine forecasting algorithms with optimization techniques. The hybrid models outperformed both single and ensemble models, with performance improvement of up to 64% compared to the best single model. The study also noted that the choice of model can depend on user expertise. Single models are easier and quicker for beginners, while hybrid models are more suitable for advanced users  who need high accuracy. Ultimately, the article emphasizes how AI-based forecasting can help reduce energy usage in buildings and encourage the development of future tools that integrate more environmental data, such as humidity and solar radiation, to future improvement predictions. 
-Another article “Residential energy consumption forecasting using deep learning models” written by Paulo Vitor B. Ramos, Saulo Moraes Villela, Walquiria N. Silva, and Bruno H. Dias, the article outlines a comprehensive methodology aimed to improve residential energy demand forecasting. The article supports the idea that using data from the past reports are critical for better planning and resource management. The study uses deep learning models like RNN, LSTM, GRU, and Time Series Transformer(TST). The study starts with pre-processing data using knowledge discovery in databases(KDD) and dimensionality reduction through principal component analysis(PCA), helping to focus on the most impactful features, like meteorological variables and time-based patterns. 
-The data is split using a rolling window approach to maintain time integrity during training. The models were then evaluated with metrics like Mean Squared Error(MSE), Mean absolute Error(MAE) and Mean Absolute Percentage Error(MAPE), while SHAP values were used to interpret feature importance and model behavior. To further enhance the performance, the study implements a voting ensemble utilized by SImulated Annealing(SA) algorithm, which distributes model weights to minimize error. This ensemble method results in a 23% improvement in hourly prediction accuracy particularly benefiting from the transformer models efficiency with smaller datasets. Overall the study’s purpose is to demonstrate how deep learning architectures combined with strategic preprocessing and model interpretation techniques, can significantly increase the precision and reliability of energy consumption forecasts. 
+Using Random Forest and Gradient Boosting Regressor models to train and predict data from 2018-2020 and evaluate how well the models would work.
 
-Methodology:
-Using the previous data from 2018 to the year before. I used the random forest model to predict the states (MWh) for the following years. I will be doing the test to predict for 2021,2022, and 2023. The model will use all the previous years data I provided. After training the data points it will make predictions. The graph will present what the model predicts will be the year's retail sales and compare it to the actual amount reported from the data source. In addition to this, I will perform a cross verification to show how well the model performed in different parts of the data as well as a MAE (Mean Absolute Error) to understand the average error of the results which gives me an idea if the data points were accurate.
-Random forest Regressor:
-The project uses machine learning models to predict Maryland’s energy consumption trends. The models focus on two key targets which include the revenue(in thousand dollars) and total retail energy sales (in MWH). The goal was to forecast values for the years 2021, 2022, and 2023 using historical data from 2018 to 2023 obtained from the U.S. Energy information administration(EIA). The data was drawn from multiple data sources provided by the EIA however, the following factors were picked out from each separate source and picked together to make the predictions. These factors include:
-Year
-Average price(cents/kWh)
-Total retail sales(MWh)
-revenue(thousand dollars)
-Two models were used to perform this analysis. One model was a Random Forest Regressor model in a year by year loop. The model was trained in the prior years between 2018 -2020. Average price(cents/kWh) and Total retail sales(MWh) were used as input features to calculate possible revenue. A standard scaler to normalize the input feature to improve model performance and prevent feature  scale dominance. 
-Prediction errors were calculated as the absolute difference between actual and predictive revenue. 
-The 2 fold cross validation method was used to calculate the average MEA across training subsets.
-Bar charts were used to create a visual comparison of the actual vs predicted revenue for the year of the target years. Each chart has been labeled for clarity. 
-Gradient Boosting Regressor:
-To enhance accuracy The gradient boosting regressor model was used in addition to the random forest model. The model again takes the data from the previous years and mimics real world forecasting to see if it can predict the future data (2021 to 2023). The model uses a standard scaler as it did with the Random Forest model to make sure the data is fitted. The MEA was again used to quantify prediction accuracy across all years of each targeted year. For this model line graphs were used to visualize comparison of the actual vs predicted values for each year. 
+EnergyML
+------------
 
-Limitations and Implications:
-Some limitations that I was dealing with included that there are other factors besides the three mentioned in the methodology that may have been impacting the actual results that were shown in the visualization. Additionally, I limited my data set to 2018-2023 to limit the amount of data I was using. However, this may have caused over or underfitting for the prediction. The random forest model treats each data point independently, which may not fully capture time based trends for autocorrelation in energy data. 
+    ├── README.md          <- TDescriped project, methodlogy and set up instructions.
+    ├── requirements.txt            <- Include packages like pandas, sklearn, matplotlib, etc.
+    ├── setup.py           <- Keep default
+    ├── data
+    │   ├── external       <- Data from third party sources.
+    │   ├── interim        <- Partially transformed data, picking out       specific factors, including Year, Revenue, Avg Price (cents/kWh), & Total retail sales (MWh).
+    │   ├── processed      <- The final, canonical data sets for modeling has specified data with specific factors including: Year, Revenue, Avg Price (cents/kWh), & Total retail sales (MWh)
+    │   └── raw            <- Raw data from U.S. EIA ranging from 1990-2023.
+    │
+    ├── docs               <- none needed
+    │
+    ├── models             <- Trained and serialized Trained Random Forest and Gradient Boosting models, model predictions.
+    │
+    ├── notebooks
+    ├── INST414MLfinal.ipynb.py <- Training and evaluating models in Jupyter,Final graphs + evaluation
+    │                         RI, ML learning model for energy consumption
+    │                         `1.0-jqp-initial-data-exploration`.
+    │
+    ├── references         <- Data dictionaries
+    │
+    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │   └── figures        <- Generated graphics and figures to be used in reporting
+    │
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    │                         generated with `pip freeze > requirements.txt`
+    │
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+    ├── src                <- Source code for use in this project.
+    │   ├── __init__.py    <- Makes src a Python module
+    │   │
+    │   ├── data           <- Scripts to download or generate data
+    │   │   └── make_dataset.py
+    │   │
+    │   ├── features       <- Scripts to turn raw data into features for 
+    │   ├── models         <- Scripts to train models and then use trained models to make
+    │   │   │                 predictions
+    │   │   ├── predict_model.py
+    │   │   └── train_model.py
+    │   │
+    │   └── visualization  <- Scripts to create exploratory and results     └── oriented visualizations 
 
-Although the article mentioned hybrid models working, I used a single model due to my level of expertise. Only 3 years were taken into account to predict for the following year, more may be needed. Another limitation that the project has is that I am not too advanced with machine learning models, this limits some of the models that are available for me to work with. The article “Forecasting energy consumption time series using machine learning techniques based on usage patterns of residential householders” mentions that using a hybrid model was more helpful for correct predictions. However as I don’t have advanced knowledge I chose to do single models. Thus, the predictions may not be as accurate as it would have been if a hybrid model was to be used instead. 
 
-Conclusion and Future Work:
-Random Forest Model:
-Strengths: The cross-validation shows that the model is capable of providing error estimates for each year. The average Mean Squared Error (MSE) for 2021 (10.31 billion) and 2022 (7.1 billion) suggests that the model performs reasonably well, with smaller errors compared to 2023. This tells me that the model is able to predict revenue trends fairly accurately for the earlier years. For 2021 and 2022, the MSE values are not excessively high, and this could be promising when used for making predictions for future years.
+--------
 
+<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+Sure! Here's your `README.md` written in paragraph form without using dashes or bullet points:
 
-Weaknesses: However, the model shows significant variability in its error for 2023, with the MSE values ranging from 17.8 billion to over 138.9 billion, leading to an average MSE of 65.27 billion. This large error indicates that the model struggles to predict revenue accurately for 2023, potentially due to the increased complexity in the data or a lack of key features. The model's performance declines as the prediction year moves further away from the training data, signaling potential overfitting to past years or insufficient training data. The wide range of MSE values also suggests that the model might not generalize well for future years beyond the training period. This drastic shift may be due to the rate of change increase.
+---
 
+# EnergyML
 
-The model's revenue prediction analysis, checked using a Mean Absolute error(MAE). The MAE for revenue predictions tells us that the model was on average about $243 million off from  the actual amount year. This means that the model used underestimated revenue for all three years, especially in 2022 and 2023. This indicates that there is a possibility of undrefitting the rata for recent spikes.
-Total retail sales prediction:
-The MAE used to check this model reflects that the model was off about 1.16 million megawatt-hours on average. For 2021 and 2022 the predictions were close, however in 2023 the guss was much higher than the actual measurement reported. This can also be seen in the graph "Actual vs Predicted Total retail sales" 2021-2022 the trends are similar, however there is a bit change in 2023.
-Overall, the MSE and cross-validation results suggest that there are additional features that need to be considered for accurate predictions using the learning model. Without these, the data could become skewed, leading to unreliable predictions. For future research, I may explore tuning the hyperparameters of the Random Forest model to achieve more consistent results across the folds. Additionally, I could add more features or transform existing ones to enhance the model's ability to make accurate predictions. The predictive model shows strong performance in forecasting both the revenue and total retail electricity sales, with acceptable levels of error from the data.
-In the business aspect
+EnergyML is a machine learning project designed to predict energy consumption and revenue trends for the state of Maryland. The project uses historical data provided by the U.S. Energy Information Administration (EIA), covering the years 2018 to 2023, for a smaller dataset. The main goal is to forecast key variables such as revenue, average price, and total retail sales in megawatt-hours. To accomplish this, the project implements supervised learning models including Random Forest and Gradient Boosting Regressors.
 
+The structure of the project follows the standard cookiecutter data science format to ensure it is organized, reproducible, and scalable. The data directory is separated into four categories: raw data contains the untouched EIA datasets, interim data holds partially cleaned data with selected features such as year and revenue, processed data includes the finalized datasets used for model training, and external data contains any third-party sources. Model outputs, including trained models and predictions, are stored in the models folder. Graphs, charts, and visualizations are placed in the reports/figures directory, and explanatory materials such as data dictionaries are available in the references folder.
 
-Reference:
+Model development, training, and evaluation are performed in a Jupyter notebook titled INST414MLfinal.ipynb.py, located in the notebooks folder. The source code supporting the pipeline is organized under the src directory, which includes scripts for dataset creation, feature engineering, model training and prediction, and visualizations. Dependencies required to run the project are listed in the requirements.txt file, and the setup.py file allows the project to be installed as a package if needed.
 
-Chou, J.-S., & Tran, D.-S. (2018). Forecasting energy consumption time series using machine learning techniques based on usage patterns of residential householders. Energy, 165, 709–726. https://doi.org/10.1016/j.energy.2018.09.144
-Ramos, P. V. B., Villela, S. M., Silva, W. N., & Dias, B. H. (2023). Residential energy consumption forecasting using deep learning models. Applied Energy, 350, 121705. https://doi.org/10.1016/j.apenergy.2023.121705
-U.S. Energy Information Administration - EIA - Independent Statistics and Analysis. (n.d.). Www.eia.gov. https://www.eia.gov/consumption/residential/data/2020/index.php?view=microdata
+To run the project, begin by cloning the repository to your local machine. After cloning, make sure you are in the project root directory. Install the required dependencies using the command pip install -r requirements.txt. Once everything is installed, you can open the notebook using JupyterLab or Jupyter Notebook and execute the cells in the correct order to preprocess data, train models, and generate visualizations. The project was designed using Python and libraries such as pandas, scikit-learn, and matplotlib. When importing the CSV data, make sure to replace the file path with the location of the cleaned data file, titled 'mllearningdata.csv', in the Cookiecutter project.
 
+This project was created for an academic machine learning course and serves as a practical application of predictive modeling techniques in the context of energy planning and data-driven decision-making.
